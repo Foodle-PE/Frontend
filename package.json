@@ -1,0 +1,25 @@
+{
+  "name": "frontgoodfood",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@primevue/themes": "^4.3.4",
+    "axios": "^1.9.0",
+    "primeflex": "^4.0.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.3.4",
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.1.3"
+  },
+  "devDependencies": {
+    "@primeuix/styled": "^0.6.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.3.5"
+  }
+}
