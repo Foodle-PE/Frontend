@@ -2,14 +2,15 @@
 
 import {defineComponent} from "vue";
 import FooterContent from "../public/footer-content.vue";
+import DashboardContent from "./views/dashboard-content.vue";
 
 export default defineComponent({
-  components: {FooterContent}
+  components: {FooterContent, DashboardContent: DashboardContent},
 })
 </script>
 
 <template>
-  <p>FUNCIONA</p>
+<DashboardContent></DashboardContent>
   <FooterContent></FooterContent>
 </template>
 
