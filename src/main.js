@@ -35,14 +35,11 @@ const app = createApp(App)
 app.use(PrimeVue, {
     theme: { preset: Material },
     ripple: true
-})
-
-app.use(ConfirmationService)
-app.use(DialogService)
-app.use(ToastService)
+    })
+    .use(ConfirmationService)
+    .use(DialogService)
+    .use(ToastService)
     .use(pinia)
-
-app
     .component('pv-button', Button)
     .component('pv-input-text', InputText)
     .component('pv-checkbox', Checkbox)

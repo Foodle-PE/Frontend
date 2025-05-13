@@ -10,16 +10,19 @@ const router = createRouter({
     routes: [
         {
             path: '/login',
+            name: 'login',
             component: SignInView
         },
 
         {
             path: '/sign-up',
+            name: 'sign-up',
             component: SignUpView
         },
 
         {
             path: '/home',
+            name:'home',
             component: HomeView,
 
         },

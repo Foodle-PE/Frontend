@@ -48,13 +48,6 @@ export default {
         <label for="password" class="block text-900 font-medium mb-2 font-semibold" style="color: #28A745 !important">Contraseña</label>
         <pv-input-text v-model="password" id="password" type="password" placeholder="Tu contraseña" class="w-full mb-3" />
 
-        <div class="flex justify-content-between align-items-center mb-6">
-          <div class="flex align-items-center" style="color: #28A745 !important">
-            <pv-checkbox v-model="rememberMe" inputId="remember" binary class="mr-2" />
-            <label for="remember">Recordarme</label>
-          </div>
-        <a class="text-blue-500 cursor-pointer font-light">¿Olvidaste tu contraseña?</a>
-    </div>
 
     <pv-button type="submit" label="Ingresar" icon="pi pi-sign-in" class="w-full" />
     <div v-if="errorMessage" class="text-red-500 mt-3 text-center">{{ errorMessage }}</div>

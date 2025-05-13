@@ -6,7 +6,7 @@ export class IamApiService{
         return http.post("/authentication/sign-up", {
             username: user.username,
             password: user.password,
-            role: user.role
+
         });
     }
 
@@ -15,7 +15,7 @@ export class IamApiService{
             firstName: user.firstname,
             lastName: user.lastname,
             email: user.email,
-            phone: user.phone,
+
         });
     }
 

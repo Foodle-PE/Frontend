@@ -14,8 +14,7 @@ export default {
   methods: {
     logout() {
       const authStore = useAuthenticationStore();
-      authStore.signOut();
-      this.$router.push('/login');
+      authStore.signOut(this.$router);
     }
   }
 }

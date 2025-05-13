@@ -1,8 +1,7 @@
 export class SignUpRequest {
-    constructor(username, password,role) {
+    constructor(username, password) {
         this.username = username;
         this.password = password;
-        this.role=role;
 
     }
 }

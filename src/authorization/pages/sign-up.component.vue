@@ -15,14 +15,13 @@ export default {
         email: '',
         username: '',
         password: '',
-        role: ''
       }
     };
   },
   methods: {
     onSignUp() {
       let authenticationStore = useAuthenticationStore();
-      let signUpRequest = new SignUpRequest(this.username, this.password, this.role);
+      let signUpRequest = new SignUpRequest(this.username, this.password);
       authenticationStore.signUp(signUpRequest, this.$router);
 
     }

@@ -1,5 +1,5 @@
 import {AuthenticationService} from "./authentication.service.js";
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import {SignInResponse} from "../model/login.response.js";
 import {SignUpResponse} from "../model/sign-up.response.js";
 
@@ -12,8 +12,10 @@ const authenticationService = new AuthenticationService();
  * It provides getters to access the current user id, username, and token.
  * It also provides actions to sign in, sign up, and sign out.
  */
-export const useAuthenticationStore = defineStore({
-    id: 'authentication',
+
+
+export const useAuthenticationStore = defineStore(  'authentication',{
+
     state: () => ({ signedIn: false, userId: 0, username: ''}),
     getters: {
         /**
@@ -49,7 +51,7 @@ export const useAuthenticationStore = defineStore({
         async signIn(signInRequest, router) {
             authenticationService.signIn(signInRequest)
                 .then(response => {
-                    let signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token, response.data.role);
+                    let signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token);
                     this.signedIn = true;
                     this.userId = signInResponse.id;
                     this.username = signInResponse.username;
