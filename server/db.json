@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Jhon",
+      "lastname": "Doe",
+      "username": "jhon34",
+      "email": "jhon@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "firstname": "Jan",
+      "lastname": "felipe",
+      "username": "jane23",
+      "email": "jane@gmail.com",
+      "password": "123"
+    },
+    {
+      "firstname": "karol",
+      "lastname": "GI",
+      "username": "karolG",
+      "email": "karol@karol",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "firstname": "Harry",
+      "lastname": "Potter",
+      "username": "Harry31",
+      "email": "harry@gmail.com",
+      "password": "123456",
+      "id": 4
+    }
+  ]
+}
