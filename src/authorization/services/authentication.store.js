@@ -51,7 +51,7 @@ export const useAuthenticationStore = defineStore(  'authentication',{
         async signIn(signInRequest, router) {
             authenticationService.signIn(signInRequest)
                 .then(response => {
-                    let signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token);
+                    let signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token, response.data.role);
                     this.signedIn = true;
                     this.userId = signInResponse.id;
                     this.username = signInResponse.username;
