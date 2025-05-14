@@ -1,29 +1,28 @@
 <script>
+import AlertList from './alerts/components/alerta-list.component.vue';
 
-import {defineComponent} from "vue";
-import FooterContent from "../public/footer-content.vue";
-
-export default defineComponent({
-  components: {FooterContent}
-})
+export default {
+  name: 'App',
+  components: {
+    AlertList
+  }
+}
 </script>
 
 <template>
-  <p>FUNCIONA</p>
-  <FooterContent></FooterContent>
+  <div id="app">
+    <h1>Gestión de Inventario</h1>
+    <AlertList />
+  </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+#app {
+  padding: 20px;
 }
 </style>
