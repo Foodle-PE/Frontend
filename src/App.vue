@@ -1,15 +1,14 @@
 <script>
-
 import {defineComponent} from "vue";
-import FooterContent from "../public/footer-content.vue";
-
+import FooterContent from "/public/footer-content.vue";
+import InventoryTable from './inventory/components/inventory.table.component.vue';
 export default defineComponent({
-  components: {FooterContent}
+  components: {FooterContent, InventoryTable}
 })
 </script>
 
 <template>
-  <p>FUNCIONA</p>
+  <InventoryTable></InventoryTable>
   <FooterContent></FooterContent>
 </template>
 
