@@ -34,7 +34,7 @@ export default {
     <div class="flex justify-content-center align-items-center">
       <div class="surface-card border-solid" style="border-color: #29a847 !important;
       border-style: solid !important; border-radius: 0.75rem; background-color: #f9f9f9 !important;
-      border-width: 1px">
+      border-width: 1px; margin-top: 20px">
         <div class="flex justify-content-center">
           <div>
             <div class="flex justify-content-center align-items-center">
