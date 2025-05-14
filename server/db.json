@@ -7,7 +7,7 @@
       "username": "jhon34",
       "email": "jhon@gmail.com",
       "password": "123456",
-      "role": "owner"
+      "role": "Owner"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "username": "jane23",
       "email": "jane@gmail.com",
       "password": "123",
-      "role": "employee"
+      "role": "Employee"
     },
     {
       "firstname": "karol",
@@ -24,7 +24,7 @@
       "username": "karolG",
       "email": "karol@karol",
       "password": "1234",
-      "role": "owner",
+      "role": "Owner",
       "id": 3
     },
     {
@@ -34,7 +34,10 @@
       "email": "harry@gmail.com",
       "password": "123456",
       "id": 4,
-      "role": "employee"
+      "role": "Employee"
+    },
+    {
+      "id": 5
     }
   ]
 }

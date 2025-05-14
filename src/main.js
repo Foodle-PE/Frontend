@@ -24,6 +24,7 @@ import InputGroupAddon from "primevue/inputgroupaddon";
 import Password from "primevue/password";
 import Divider from 'primevue/divider'
 import Toolbar from 'primevue/toolbar'
+import {RadioButton} from "primevue";
 
 import {createPinia} from "pinia";
 const pinia = createPinia();
@@ -51,5 +52,6 @@ app.use(PrimeVue, {
     .component('pv-password', Password)
     .component('pv-divider', Divider)
     .component('pv-toolbar', Toolbar)
+    .component('pv-radioButton', RadioButton)
 app.use(router)
 app.mount('#app')

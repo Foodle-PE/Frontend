@@ -8,20 +8,30 @@ export default {
   components: {},
   data() {
     return {
-      checked1: false, // or any default value you want
-      errorMessage: '', // or any default value you want
+      checked1: false,
+      errorMessage: '',
       username: '',
       password: ''
     };
   },
-  created() {
+  computed: {
 
+    errorMessage() {
+      const authStore = useAuthenticationStore();
+      return authStore.errorMessage;
+    }
   },
   methods: {
     onSignIn() {
-      let authenticationStore = useAuthenticationStore();
-      let signInRequest = new SignInRequest(this.username, this.password);
-      authenticationStore.signIn(signInRequest, this.$router);
+      if (!this.username || !this.password) {
+        alert('Por favor ingrese usuario y contraseña');
+        return;
+      }
+
+      const authStore = useAuthenticationStore();
+      const signInRequest = new SignInRequest(this.username, this.password);
+
+      authStore.signIn(signInRequest, this.$router);
     }
   }
 }

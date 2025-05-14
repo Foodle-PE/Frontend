@@ -66,6 +66,19 @@
         <pv-password v-model="confirmPassword" id="confirmPassword" placeholder="Confirm Password" toggleMask/>
       </pv-InputGroup>
 
+      <div class="card flex justify-content-center" style="margin-bottom:1rem;">
+        <div class="flex flex-wrap gap-3">
+          <div class="flex align-items-center">
+            <pv-radioButton v-model="user.role" inputId="owner" name="owner" value="Owner"/>
+            <label for="owner" class="ml-2">Owner</label>
+          </div>
+          <div class="flex align-items-center">
+            <pv-radioButton v-model="user.role" inputId="employee" name="employee" value="Employee"/>
+            <label for="employee" class="ml-2">Employee</label>
+          </div>
+        </div>
+      </div>
+
       <div style=" text-align:center;" class="centered-button">
         <pv-button class="centered-button" type="submit" style="width:100%;">Submit</pv-button>
       </div>
@@ -114,5 +127,10 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.ml-2{
+  color: #28A745;
+}
+
+
 
 </style>
