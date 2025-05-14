@@ -1,0 +1,33 @@
+{
+
+  "welcome": "Welcome to Your Gym App!",
+  "track": "Track your workout plans and nutrition here.",
+  "workout" : "Your Workout Plan",
+  "exercise-information": "Exercise Information",
+  "cardio-description": "For improving cardio vascular health through regular and consistent aerobic activities.",
+  "running-description": "Running is one of the most effective forms of aerobic exercise.",
+  "jump-rope-description": "Jumping rope benefits several muscles at the same time.",
+  "weight-lifting-description": "To build muscle and strength through regular and focused strength training exercises.",
+  "strength-training-description": "Do strength training exercises for all major muscle groups at least two times a week.",
+  "beginner-guide-description": "Use our beginner strength training guide to begin losing weight and building muscle.",
+
+
+  "coach": {
+    "knowledge": "New",
+    "guidance": "Reach out for personalized guidance."
+  },
+  "book": {
+    "title": "Book a Training Session",
+    "details": "Fill in the details",
+    "selectCoach": "Select Coach",
+    "sessionDate": "Session Date",
+    "bookNow": "Book Now"
+  },
+  "footer": "© 2024 FlexPal. All rights reserved."
+
+
+
+
+
+
+}
