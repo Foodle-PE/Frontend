@@ -24,19 +24,32 @@ export default defineComponent({
 </script>
 
 <template>
-  <div id="app">
-    <router-view />
+  <div class="app-layout">
+    <ToolbarContent />
+    <main class="main-content">
+      <router-view />
+    </main>
+    <FooterContent />
   </div>
-  <FooterContent />
 </template>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
-#app {
-  padding: 20px;
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 110px 20px 20px; /* top padding para dejar espacio al Toolbar (90px + extra margen) */
+  box-sizing: border-box;
 }
 </style>

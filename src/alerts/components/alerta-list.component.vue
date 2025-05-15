@@ -143,7 +143,7 @@ export default {
 .alert-card {
   border-radius: 15px;
   padding: 16px;
-  background-color: #2e2e2e;
+  background-color: #b1b1b1;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 .alert-card.low {
@@ -177,7 +177,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(100, 50, 50, 0.9);
+  background-color: rgba(255, 201, 201, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;

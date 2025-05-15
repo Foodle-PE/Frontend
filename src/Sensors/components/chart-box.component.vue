@@ -5,10 +5,10 @@
       <span v-if="alert" class="alert-badge">⚠ Alerta</span>
     </div>
     <component
-      :is="chartType"
-      :data="chartData"
-      :options="chartOptions"
-      class="chart-container"
+        :is="chartType"
+        :data="chartData"
+        :options="chartOptions"
+        class="chart-container"
     />
   </div>
 </template>
@@ -28,14 +28,14 @@ import {
 import { Bar, Line } from 'vue-chartjs'
 
 ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  PointElement,
-  LineElement,
-  CategoryScale,
-  LinearScale
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    PointElement,
+    LineElement,
+    CategoryScale,
+    LinearScale
 )
 
 // aca agregas tmb si quieres y ya
@@ -76,9 +76,9 @@ export default {
 
       const gasColors = {
         backgroundColor: this.data.map(value =>
-          value > 500 ? 'rgba(255, 99, 132, 0.8)' : // Rojo para valores altos
-          value > 200 ? 'rgba(255, 159, 64, 0.8)' : // Naranja para valores moderados
-          'rgba(75, 192, 192, 0.8)' // Verde para valores bajos
+            value > 500 ? 'rgba(255, 99, 132, 0.8)' : // Rojo para valores altos
+                value > 200 ? 'rgba(255, 159, 64, 0.8)' : // Naranja para valores moderados
+                    'rgba(75, 192, 192, 0.8)' // Verde para valores bajos
         ),
         borderColor: 'rgba(54, 54, 54, 0.2)'
       }

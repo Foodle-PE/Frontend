@@ -6,6 +6,7 @@ import HomeView from '../src/authorization/pages/home.component.vue'
 const inventoryMenu = () => import('../src/inventory/components/inventory.table.component.vue')
 const alertsMenu = () => import('../src/alerts/components/alerta-list.component.vue')
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -24,7 +25,7 @@ const router = createRouter({
         {
             path: '/home',
             name:'home',
-            component: HomeView,
+            component: HomeView
 
         },
         {
@@ -41,7 +42,6 @@ const router = createRouter({
             name: 'alerts',
             component: alertsMenu
         }
-
     ]
 });
 
