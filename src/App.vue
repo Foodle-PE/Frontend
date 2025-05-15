@@ -25,14 +25,9 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <h1>Gestión de Inventario</h1>
-    <AlertList />
-    <ToolbarContent />
-    <DashboardContent />
-    <InventoryTable />
-    <FooterContent />
     <router-view />
   </div>
+  <FooterContent />
 </template>
 
 <style>

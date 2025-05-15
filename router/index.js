@@ -3,7 +3,8 @@ import SignInView from '../src/authorization/pages/login-content.component.vue'
 import SignUpView from '../src/authorization/pages/sign-up.component.vue'
 import HomeView from '../src/authorization/pages/home.component.vue'
 
-
+const inventoryMenu = () => import('../src/inventory/components/inventory.table.component.vue')
+const alertsMenu = () => import('../src/alerts/components/alerta-list.component.vue')
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +30,16 @@ const router = createRouter({
         {
             path: '/',
             redirect: '/login'
+        },
+        {
+            path: '/inventory',
+            name: 'inventory',
+            component: inventoryMenu
+        },
+        {
+            path: '/alerts',
+            name: 'alerts',
+            component: alertsMenu
         }
 
     ]
