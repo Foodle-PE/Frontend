@@ -85,4 +85,11 @@ button {
 
 body{
   background-color: #f9f9f9 !important;
+body, html, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, sans-serif;
+  background-color: #fff;
+  color: #000;
 }
