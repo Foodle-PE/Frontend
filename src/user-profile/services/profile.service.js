@@ -7,7 +7,7 @@ export class ProfileService {
     }
 
     async updateProfile(userId, profile) {
-        const response = await http.put(`/profile/${userId}`, profile);
+        const response = await http.put(`/profile?userId=${userId}`, profile);
         return response.data;
     }
 }
