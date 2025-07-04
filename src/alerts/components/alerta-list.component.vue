@@ -18,12 +18,13 @@
       <div
           class="alert-card"
           v-for="alert in alerts"
-          :key="alert.id"
-          :class="alert.severity"
+          :key="alert.Id"
+          :class="alert.Severity"
       >
-        <h3>{{ alert.type.toUpperCase() }}</h3>
-        <p>{{ alert.message }}</p>
-        <small>Fecha: {{ alert.date }}</small>
+        <!--<h3>{{ alert.AlertType.toUpperCase() }}</h3>-->
+        <h3>{{ alert.AlertType}}</h3>
+        <p>{{ alert.Message }}</p>
+        <small>Fecha: {{ alert.Date }}</small>
         <div class="buttons">
           <button @click="showDetails(alert)">Más detalles</button>
           <button @click="closeAlert(alert)">Cerrar</button>
@@ -39,10 +40,11 @@
         </div>
         <div v-else>
           <ul>
-            <li v-for="alert in closedAlerts" :key="alert.id">
-              <strong>{{ alert.type.toUpperCase() }}</strong> - {{ alert.message }}
+            <li v-for="alert in closedAlerts" :key="alert.Id">
+              <!--<strong>{{ alert.AlertType.toUpperCase() }}</strong> - {{ alert.Message }}-->
+              <strong>{{ alert.AlertType}}</strong> - {{ alert.Message }}
               <br />
-              <small>{{ alert.date }}</small>
+              <small>{{ alert.Date }}</small>
             </li>
           </ul>
         </div>
@@ -56,10 +58,10 @@
     <div v-if="selectedAlert" class="modal-overlay" @click.self="selectedAlert = null">
       <div class="modal-card">
         <h2>Detalle de Alerta</h2>
-        <p><strong>Tipo:</strong> {{ selectedAlert.type }}</p>
-        <p><strong>Mensaje:</strong> {{ selectedAlert.message }}</p>
-        <p><strong>Severidad:</strong> {{ selectedAlert.severity }}</p>
-        <p><strong>Fecha:</strong> {{ selectedAlert.date }}</p>
+        <p><strong>Tipo:</strong> {{ selectedAlert.AlertType }}</p>
+        <p><strong>Mensaje:</strong> {{ selectedAlert.Message }}</p>
+        <p><strong>Severidad:</strong> {{ selectedAlert.Severity }}</p>
+        <p><strong>Fecha:</strong> {{ selectedAlert.Date }}</p>
         <button @click="selectedAlert = null">Cerrar detalle</button>
       </div>
     </div>
@@ -82,6 +84,7 @@ export default {
     onMounted(async () => {
       try {
         alerts.value = await fetchAlerts()
+        console.log("Alertas recibidas:", alerts.value)  //probar
       } catch (err) {
         error.value = 'Error cargando alertas'
       } finally {
@@ -90,7 +93,7 @@ export default {
     })
 
     function closeAlert(alert) {
-      alerts.value = alerts.value.filter(a => a.id !== alert.id)
+      alerts.value = alerts.value.filter(a => a.Id !== alert.Id)
       closedAlerts.value.push(alert)
     }
 
@@ -143,7 +146,7 @@ export default {
 .alert-card {
   border-radius: 15px;
   padding: 16px;
-  background-color: #2e2e2e;
+  background-color: #b1b1b1;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 .alert-card.low {
@@ -177,14 +180,14 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(100, 50, 50, 0.9);
+  background-color: rgba(255, 201, 201, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-card {
-  background: #2e2e2e;
+  background: #f3e8cd;
   padding: 24px;
   border-radius: 8px;
   width: 90%;
@@ -200,7 +203,7 @@ export default {
 .history-card {
   width: 100%;
   max-width: 600px;
-  background-color: #2e2e2e;
+  background-color: #f3e8cd;
   border: 1px solid #ddd;
   border-left: 5px solid #2196f3;
   padding: 20px;
