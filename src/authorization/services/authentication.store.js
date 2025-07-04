@@ -24,6 +24,7 @@ export const useAuthenticationStore = defineStore('authentication', {
         async signIn(signInRequest, router) {
             try {
                 const user = await authenticationService.signIn(signInRequest);
+                console.log("Usuario recibido:", user);
 
                 // Validar que user tenga las propiedades necesarias
                 if (!user || !user.id || !user.username || !user.token) {
@@ -43,7 +44,8 @@ export const useAuthenticationStore = defineStore('authentication', {
                 localStorage.setItem('token', signInResponse.token);
 
                 // Redirigir a home
-                router.push({ name: 'home' });
+                //router.push({ name: 'home' });
+                router.push({ name: 'user-profile' });
 
             } catch (error) {
                 // Capturar y guardar mensaje de error
