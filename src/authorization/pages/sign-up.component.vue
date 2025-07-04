@@ -3,27 +3,25 @@ import { useAuthenticationStore } from '/src/authorization/services/authenticati
 import FormRegister from "/src/authorization/components/registration-form.component.vue";
 import {SignUpRequest} from "../model/sign-up.request.js";
 
-
 export default {
   name: "sign-up",
-  components: {FormRegister},
-  data() {
-    return {
-      user: {
-        firstname: '',
-        lastname: '',
-        email: '',
-        username: '',
-        password: '',
-      }
-    };
-  },
+  components: { FormRegister },
   methods: {
-    onSignUp() {
-      let authenticationStore = useAuthenticationStore();
-      let signUpRequest = new SignUpRequest(this.username, this.password);
-      authenticationStore.signUp(signUpRequest, this.$router);
+    onSignUp(user) {
+      const authenticationStore = useAuthenticationStore();
 
+      const signUpRequest = new SignUpRequest(
+          user.username,
+          user.password,
+          user.role,
+          user.firstname,
+          user.lastname,
+          user.email,
+          user.phone
+      );
+
+      authenticationStore.signUp(signUpRequest, this.$router);
+      console.log("Payload final:", signUpRequest);
     }
   }
 }

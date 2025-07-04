@@ -63,7 +63,7 @@ export const useAuthenticationStore = defineStore('authentication', {
         async signUp(signUpRequest, router) {
             try {
                 const response = await authenticationService.signUp(signUpRequest);
-                const signUpResponse = new SignUpResponse(response.data.message);
+                const signUpResponse = new SignUpResponse(response.message); // ✅ ya es response.data
                 console.log(signUpResponse);
                 router.push({ name: 'login' });
             } catch (error) {

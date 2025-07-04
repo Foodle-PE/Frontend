@@ -9,7 +9,6 @@ export default {
   data() {
     return {
       checked1: false,
-      errorMessage: '',
       username: '',
       password: ''
     };

@@ -1,27 +1,21 @@
 import http from "../../shared/services/http";
 
-export class IamApiService{
-
+export class IamApiService {
     signUpUser(user) {
         return http.post("/authentication/sign-up", {
             username: user.username,
             password: user.password,
-
-        });
-    }
-
-    createProfile(user) {
-        return http.post("/profiles", {
-            firstName: user.firstname,
-            lastName: user.lastname,
+            firstname: user.firstname,
+            lastname: user.lastname,
             email: user.email,
-
+            phone: user.phone,
+            role: user.role
         });
     }
 
     async signInUser(username, password) {
         try {
-            const response = await http.post("/authentication/login", { username, password });
+            const response = await http.post("/authentication/sign-in", { username, password });
             return response.data;
         } catch (error) {
             console.error('Error signing in user:', error);

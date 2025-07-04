@@ -27,6 +27,14 @@
         <pv-input-text id="email" v-model="user.email" placeholder="Email"/>
       </pv-InputGroup>
 
+      <pv-InputGroup class="mb-4">
+        <label class="px-5 w-4" for="phone">Phone</label>
+        <pv-InputGroupAddon>
+          <i class="pi pi-phone"></i>
+        </pv-InputGroupAddon>
+        <pv-input-text id="phone" v-model="user.phone" placeholder="Phone"/>
+      </pv-InputGroup>
+
 
       <pv-InputGroup class="mb-4">
         <label class="px-5 w-4" for="username">Username</label>
