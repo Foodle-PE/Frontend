@@ -6,7 +6,7 @@
 
     <template #center>
       <div class="nav-buttons">
-        <router-link to="/home" class="nav-button">Home</router-link>
+        <router-link to="/user-profile" class="nav-button">Home</router-link>
         <router-link to="/inventory" class="nav-button">Inventario</router-link>
         <router-link to="/alerts" class="nav-button">Alertas</router-link>
       </div>
