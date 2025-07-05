@@ -14,7 +14,7 @@ export default {
     </div>
     <div  class="col-12 ml-3 mt-3 align-items-center justify-content-center">
       <p>
-        Authors: Paolo Torres, Luis Piñero, Luis Montañez, Maria Machuca & Sergio Aguirre.
+        Authors: Paolo Torres, Luis Montañez, Maria Machuca & Sergio Aguirre.
       </p>
     </div>
   </div>
