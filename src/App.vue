@@ -1,8 +1,6 @@
 <template>
   <div class="app-layout">
-    <sidebar />
     <div class="main-content">
-      <header-bar />
 
       <div class="charts-wrapper">
         <chart-box
@@ -16,7 +14,6 @@
           :alert="Math.max(...gas) > 40"
         />
 
-        <!-- GRÁFICOS PERSONALIZADOS -->
         <chart-box
           v-for="(chart, index) in customCharts"
           :key="index"
@@ -32,8 +29,6 @@
 </template>
 
 <script>
-import Sidebar from './Sensors/components/sidebar.component.vue'
-import HeaderBar from './Sensors/components/header.component.vue'
 import ChartBox from './Sensors/components/chart-box.component.vue'
 import InputBox from './Sensors/components/input-box.component.vue'
 
@@ -41,8 +36,6 @@ import { getTemperatureData, getGasLevels } from './Sensors/services/sensor.serv
 
 export default {
   components: {
-    Sidebar,
-    HeaderBar,
     ChartBox,
     InputBox
   },
@@ -50,7 +43,7 @@ export default {
     return {
       temperature: [],
       gas: [],
-      customCharts: [] // para gráficos nuevos
+      customCharts: []
     }
   },
   async mounted() {
