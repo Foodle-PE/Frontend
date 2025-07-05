@@ -1,49 +1,36 @@
-import http from "../../shared/services/http.js";
-
+import http from "../../shared/services/http.js"; // Asegúrate de que esta instancia tenga el baseURL correcto
 export class AuthenticationService {
 
-    // Simulación de registro (sign-up)
+    // Registro (Sign-up)
     async signUp(signUpRequest) {
         try {
-            const response = await http.post("/users", {
+            const response = await http.post("/authentication/sign-up", {
                 username: signUpRequest.username,
                 password: signUpRequest.password,
-                firstname: signUpRequest.firstname,
-                lastname: signUpRequest.lastname,
+                firstName: signUpRequest.firstname,
+                lastName: signUpRequest.lastname,
                 email: signUpRequest.email,
                 phone: signUpRequest.phone,
                 role: signUpRequest.role
             });
 
-            return response.data;
+            return response.data; // { message: "...", userId: ... }
         } catch (error) {
             console.error("Error en sign-up:", error);
             throw error;
         }
     }
 
-    // Simulación de login (sign-in)
+    // Inicio de sesión (Sign-in)
     async signIn(signInRequest) {
         try {
-            const response = await http.get("/users", {
-                params: {
-                    username: signInRequest.username,
-                    password: signInRequest.password
-                }
+            const response = await http.post("/authentication/sign-in", {
+                username: signInRequest.username,
+                password: signInRequest.password
             });
 
-            if (response.data.length > 0) {
-                const user = response.data[0];
-                return {
-                    id: user.id,
-                    username: user.username,
-                    email: user.email,
-                    role: user.role,
-                    token: "fake-jwt-token"
-                };
-            } else {
-                throw new Error("Credenciales incorrectas");
-            }
+            return response.data;
+            // { id, username, token, role }
         } catch (error) {
             console.error("Error en sign-in:", error);
             throw error;
