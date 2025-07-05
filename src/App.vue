@@ -1,55 +1,88 @@
-<script>
-import { defineComponent } from "vue";
-
-import AlertList from './alerts/components/alerta-list.component.vue';
-import FooterContent from "../public/footer-content.vue";
-import SignInView from "../src/authorization/pages/login-content.component.vue";
-import HomeView from "./authorization/pages/home.component.vue";
-import ToolbarContent from "../public/toolbarcontent.component.vue";
-import DashboardContent from "./views/dashboard-content.vue";
-import InventoryTable from './inventory/components/inventory.table.component.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    AlertList,
-    FooterContent,
-    SignInView,
-    HomeView,
-    ToolbarContent,
-    DashboardContent,
-    InventoryTable
-  }
-});
-</script>
-
 <template>
   <div class="app-layout">
-    <ToolbarContent />
-    <main class="main-content">
-      <router-view />
-    </main>
-    <FooterContent />
+    <div class="main-content">
+
+      <div class="charts-wrapper">
+        <chart-box
+          title="Temperature"
+          :data="temperature"
+          :alert="Math.max(...temperature) > 25"
+        />
+        <chart-box
+          title="Gas Levels"
+          :data="gas"
+          :alert="Math.max(...gas) > 40"
+        />
+
+        <chart-box
+          v-for="(chart, index) in customCharts"
+          :key="index"
+          :title="chart.title"
+          :data="chart.data"
+          :alert="Math.max(...chart.data) > 40"
+        />
+
+        <input-box @create-graph="crearGrafico" />
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
+<script>
+import ChartBox from './Sensors/components/chart-box.component.vue'
+import InputBox from './Sensors/components/input-box.component.vue'
 
+import { getTemperatureData, getGasLevels } from './Sensors/services/sensor.service.js'
+
+export default {
+  components: {
+    ChartBox,
+    InputBox
+  },
+  data() {
+    return {
+      temperature: [],
+      gas: [],
+      customCharts: []
+    }
+  },
+  async mounted() {
+    this.temperature = await getTemperatureData()
+    this.gas = await getGasLevels()
+  },
+  methods: {
+    crearGrafico(nombre) {
+      const ubicaciones = ['Miraflores', 'San Isidro', 'Barranco', 'Surco', 'Jesús María']
+      const datos = ubicaciones.map(() => Math.floor(Math.random() * 50) + 10)
+
+      this.customCharts.push({
+        title: `${nombre}`,
+        data: datos
+      })
+    }
+  }
+}
+</script>
+
+<style scoped>
 .app-layout {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Inter', sans-serif;
 }
 
 .main-content {
   flex: 1;
-  padding: 110px 20px 20px; /* top padding para dejar espacio al Toolbar (90px + extra margen) */
-  box-sizing: border-box;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.charts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 </style>
