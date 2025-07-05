@@ -1,28 +1,3 @@
-<script>
-import { defineComponent } from "vue";
-
-import AlertList from './alerts/components/alerta-list.component.vue';
-import FooterContent from "../public/footer-content.vue";
-import SignInView from "../src/authorization/pages/login-content.component.vue";
-import HomeView from "./authorization/pages/home.component.vue";
-import ToolbarContent from "../public/toolbarcontent.component.vue";
-import DashboardContent from "./views/dashboard-content.vue";
-import InventoryTable from './inventory/components/inventory.table.component.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    AlertList,
-    FooterContent,
-    SignInView,
-    HomeView,
-    ToolbarContent,
-    DashboardContent,
-    InventoryTable
-  }
-});
-</script>
-
 <template>
   <div class="app-layout">
     <ToolbarContent />
@@ -32,6 +7,34 @@ export default defineComponent({
     <FooterContent />
   </div>
 </template>
+
+<script>
+
+import AlertList from './alerts/components/alerta-list.component.vue';
+import FooterContent from "../public/footer-content.vue";
+import SignInView from "../src/authorization/pages/login-content.component.vue";
+import HomeView from "./authorization/pages/home.component.vue";
+import ToolbarContent from "../public/toolbarcontent.component.vue";
+import DashboardContent from "./views/dashboard-content.vue";
+import InventoryTable from './inventory/components/inventory.table.component.vue';
+import ChartBox from './Sensors/components/chart-box.component.vue'
+import InputBox from './Sensors/components/input-box.component.vue'
+
+export default {
+  name: "App",
+  components: {
+    AlertList,
+    FooterContent,
+    SignInView,
+    HomeView,
+    ToolbarContent,
+    DashboardContent,
+    ChartBox,
+    InputBox,
+    InventoryTable
+  },
+}
+</script>
 
 <style>
 html, body {
@@ -49,7 +52,7 @@ html, body {
 
 .main-content {
   flex: 1;
-  padding: 110px 20px 20px; /* top padding para dejar espacio al Toolbar (90px + extra margen) */
+  padding: 110px 20px 20px;
   box-sizing: border-box;
 }
 </style>
