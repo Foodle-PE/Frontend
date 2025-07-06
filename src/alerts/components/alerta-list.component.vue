@@ -2,9 +2,38 @@
   <div class="alert-container">
     <h2>Alertas</h2>
 
-    <button @click="toggleHistory" class="history-btn">
-      {{ showHistory ? 'Ocultar historial' : 'Historial de alertas' }}
-    </button>
+    <div class="actions">
+      <button @click="toggleHistory" class="history-btn">
+        {{ showHistory ? 'Ocultar historial' : 'Historial de alertas' }}
+      </button>
+      <button @click="showAlertForm = !showAlertForm" class="add-alert-btn">
+        {{ showAlertForm ? 'Cancelar' : 'Agregar Alerta' }}
+      </button>
+    </div>
+
+    <!-- Formulario para nueva alerta -->
+    <div v-if="showAlertForm" class="alert-form">
+      <form @submit.prevent="submitAlert">
+        <label>
+          Tipo de alerta:
+          <input v-model="newAlert.AlertType" required />
+        </label>
+        <label>
+          Mensaje:
+          <input v-model="newAlert.Message" required />
+        </label>
+        <label>
+          Severidad:
+          <select v-model="newAlert.Severity" required>
+            <option disabled value="">Seleccione severidad</option>
+            <option value="low">Baja</option>
+            <option value="medium">Media</option>
+            <option value="high">Alta</option>
+          </select>
+        </label>
+        <button type="submit">Guardar Alerta</button>
+      </form>
+    </div>
 
     <div v-if="loading">Cargando alertas...</div>
     <div v-else-if="error">{{ error }}</div>
@@ -21,8 +50,7 @@
           :key="alert.Id"
           :class="alert.Severity"
       >
-        <!--<h3>{{ alert.AlertType.toUpperCase() }}</h3>-->
-        <h3>{{ alert.AlertType}}</h3>
+        <h3>{{ alert.AlertType }}</h3>
         <p>{{ alert.Message }}</p>
         <small>Fecha: {{ alert.Date }}</small>
         <div class="buttons">
@@ -41,8 +69,7 @@
         <div v-else>
           <ul>
             <li v-for="alert in closedAlerts" :key="alert.Id">
-              <!--<strong>{{ alert.AlertType.toUpperCase() }}</strong> - {{ alert.Message }}-->
-              <strong>{{ alert.AlertType}}</strong> - {{ alert.Message }}
+              <strong>{{ alert.AlertType }}</strong> - {{ alert.Message }}
               <br />
               <small>{{ alert.Date }}</small>
             </li>
@@ -66,7 +93,7 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { fetchAlerts } from '../services/alert.assembler'
+import { fetchAlerts, createAlert, closeAlertById } from '../services/alert.assembler'
 
 export default {
   setup() {
@@ -76,11 +103,18 @@ export default {
     const loading = ref(true)
     const error = ref(null)
     const showHistory = ref(false)
+    const showAlertForm = ref(false)
+
+    const newAlert = ref({
+      AlertType: '',
+      Message: '',
+      Severity: ''
+    })
 
     onMounted(async () => {
       try {
         alerts.value = await fetchAlerts()
-        console.log("Alertas recibidas:", alerts.value)  //probar
+        console.log("Alertas recibidas:", alerts.value)
       } catch (err) {
         error.value = 'Error cargando alertas'
       } finally {
@@ -88,9 +122,14 @@ export default {
       }
     })
 
-    function closeAlert(alert) {
-      alerts.value = alerts.value.filter(a => a.Id !== alert.Id)
-      closedAlerts.value.push(alert)
+    async function closeAlert(alert) {
+      try {
+        await closeAlertById(alert.Id); // ✅ llama al backend para cerrar
+        alerts.value = alerts.value.filter(a => a.Id !== alert.Id); // ✅ quítalo del array de alertas activas
+        closedAlerts.value.push(alert); // ✅ agrégalo al historial local
+      } catch (err) {
+        console.error("Error al cerrar la alerta:", err);
+      }
     }
 
     function showDetails(alert) {
@@ -101,16 +140,34 @@ export default {
       showHistory.value = !showHistory.value
     }
 
+    async function submitAlert() {
+      try {
+        const alertToSend = {
+          ...newAlert.value,
+          Date: new Date().toISOString()
+        }
+        const created = await createAlert(alertToSend)
+        alerts.value.push(created)
+        newAlert.value = { AlertType: '', Message: '', Severity: '' }
+        showAlertForm.value = false
+      } catch (err) {
+        console.error('Error al crear alerta', err)
+      }
+    }
+
     return {
       alerts,
       closedAlerts,
+      selectedAlert,
       loading,
       error,
-      selectedAlert,
+      showHistory,
+      toggleHistory,
       showDetails,
       closeAlert,
-      showHistory,
-      toggleHistory
+      showAlertForm,
+      newAlert,
+      submitAlert
     }
   }
 }
@@ -119,24 +176,54 @@ export default {
 <style scoped>
 .alert-container {
   padding: 20px;
-
 }
 
-.history-btn {
+.actions {
+  display: flex;
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+.history-btn,
+.add-alert-btn {
   padding: 8px 12px;
-  background-color: #2196f3;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
+.history-btn {
+  background-color: #2196f3;
+}
+
+.add-alert-btn {
+  background-color: #4caf50;
+}
+
+.alert-form {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.alert-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.alert-form input,
+.alert-form select {
+  margin-left: 10px;
+  padding: 4px;
+}
+
 .alert-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
-
 }
 
 .alert-card {
@@ -227,5 +314,4 @@ export default {
   font-size: 3em;
   margin-bottom: 10px;
 }
-
 </style>
