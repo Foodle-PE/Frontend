@@ -1,10 +1,13 @@
 import Alert from "../model/alert.entity.js";
+import http from "../../shared/services/http";
 
 export async function fetchAlerts() {
-    const response = await fetch('http://localhost:5104/Alerta')
-    if (!response.ok) {
-        throw new Error('No se pudieron obtener las alertas')
+    try {
+        const response = await http.get("/Alerta"); // Usa mayúscula si así está en backend
+        const rawAlerts = response.data;
+        return rawAlerts.map(data => new Alert(data));
+    } catch (error) {
+        console.error("Error al obtener alertas:", error);
+        throw new Error("No se pudieron obtener las alertas");
     }
-    const rawAlerts = await response.json()
-    return rawAlerts.map(data => new Alert(data))
 }

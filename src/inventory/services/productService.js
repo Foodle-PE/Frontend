@@ -1,9 +1,6 @@
-import axios from 'axios';
+import http from '../../shared/services/http.js';
 
-const API_URL = 'http://localhost:3001/api/v1/products';
+const API_URL = 'http://localhost:5104/api/v1/inventory';
 
-export const getProducts = () => axios.get(API_URL);
-
-export const addProduct = (product) => axios.post(API_URL, product);
-
-export const deleteProduct = (id) => axios.delete(`${API_URL}/${id}`);
+export const getProducts = () => http.get('/inventory');
+export const addProduct = (product) => http.post('/inventory', product);

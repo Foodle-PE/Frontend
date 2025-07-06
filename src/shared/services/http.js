@@ -9,6 +9,13 @@ const http = axios.create({
     baseURL: API_BASE_URL,
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
 });
+
+// Añadir token si ya está guardado en localStorage
+const token = localStorage.getItem("token");
+if (token) {
+    http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+
 // Add authentication interceptor
 http.interceptors.request.use(authenticationInterceptor);
 

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getProducts, addProduct, deleteProduct } from '../services/productService';
+import { getProducts, addProduct} from '../services/productService';
 
 const products = ref([]);
 const showForm = ref(false);
@@ -12,6 +12,7 @@ const newProduct = ref({
 const loadProducts = async () => {
   try {
     const response = await getProducts();
+    console.log("Productos desde backend:", response.data); // 👈
     products.value = response.data;
   } catch (error) {
     console.error('Error loading products:', error);
@@ -26,15 +27,6 @@ const submitProduct = async () => {
     newProduct.value = { name: '', expirationDate: '', quantity: 0 };
   } catch (error) {
     console.error('Error adding product:', error);
-  }
-};
-
-const deleteProductById = async (id) => {
-  try {
-    await deleteProduct(id);
-    products.value = products.value.filter(p => p.id !== id);
-  } catch (error) {
-    console.error('Error deleting product:', error);
   }
 };
 
@@ -53,7 +45,6 @@ onMounted(() => {
         <th>Product</th>
         <th>Expiration Date</th>
         <th>Quantity</th>
-        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -61,7 +52,6 @@ onMounted(() => {
         <td>{{ product.name }}</td>
         <td>{{ product.expirationDate }}</td>
         <td>{{ product.quantity }}</td>
-        <td><button @click="deleteProductById(product.id)">Delete</button></td>
       </tr>
       </tbody>
     </table>
