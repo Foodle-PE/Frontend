@@ -7,7 +7,7 @@ console.log('API_BASE_URL', API_BASE_URL);
 
 const http = axios.create({
     baseURL: API_BASE_URL,
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: { 'Content-Type': 'application/json'}
 });
 
 // Añadir token si ya está guardado en localStorage
