@@ -155,3 +155,146 @@ async function submitAlert() {
   }
 }
 </script>
+
+<style scoped>
+.alert-container {
+  padding: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.history-btn,
+.add-alert-btn {
+  padding: 8px 12px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.history-btn {
+  background-color: #2196f3;
+}
+
+.add-alert-btn {
+  background-color: #4caf50;
+}
+
+.alert-form {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.alert-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.alert-form input,
+.alert-form select {
+  margin-left: 10px;
+  padding: 4px;
+}
+
+.alert-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.alert-card {
+  border-radius: 15px;
+  padding: 16px;
+  background-color: #b1b1b1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.alert-card.low {
+  border-left: 5px solid #4caf50;
+}
+.alert-card.medium {
+  border-left: 5px solid #ff9800;
+}
+.alert-card.high {
+  border-left: 5px solid #f44336;
+}
+
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #ff9800;
+  border-radius: 4px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 201, 201, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-card {
+  background: #f3e8cd;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.history-cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.history-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #f3e8cd;
+  border: 1px solid #ddd;
+  border-left: 5px solid #2196f3;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.history-card h3 {
+  margin-top: 0;
+}
+.history-card ul {
+  padding-left: 20px;
+}
+.history-card li {
+  margin-bottom: 12px;
+}
+
+.no-alerts {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.2em;
+  color: #4caf50;
+}
+
+.check-icon {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+</style>
