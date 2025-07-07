@@ -3,8 +3,10 @@ import { useAuthenticationStore } from '/src/authorization/services/authenticati
 import { SignInRequest } from '../model/login.request.js'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router' // ✅ IMPORTANTE
 
 const { t } = useI18n()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')

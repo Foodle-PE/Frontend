@@ -49,7 +49,7 @@ const router = createRouter({
             meta: { requiresAuth: true }
         },
         {
-            path: '/edit-profile',  // 👈 define la ruta
+            path: '/edit-profile',
             name: 'edit-profile',
             component: editProfile
         }
