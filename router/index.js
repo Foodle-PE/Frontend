@@ -5,8 +5,8 @@ import HomeView from '../src/authorization/pages/home.component.vue'
 
 const inventoryMenu = () => import('../src/inventory/components/inventory.table.component.vue')
 const alertsMenu = () => import('../src/alerts/components/alerta-list.component.vue')
-
-
+const userProfile=() => import('../src/user-profile/pages/UserProfile.vue')
+const editProfile=() => import('../src/user-profile/components/EditProfile.vue')
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -41,7 +41,19 @@ const router = createRouter({
             path: '/alerts',
             name: 'alerts',
             component: alertsMenu
+        },
+        {
+            path: '/user-profile',
+            name: 'user-profile',
+            component: userProfile,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/edit-profile',  // 👈 define la ruta
+            name: 'edit-profile',
+            component: editProfile
         }
+
     ]
 });
 
