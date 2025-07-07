@@ -1,21 +1,24 @@
-<script>
-export default {
-  name: "userProfileCard",
-  props: {
-    profile: {
-      type: Object,
-      required: true,
-    },
-    onEditProfile: {
-      type: Function,
-      required: true,
-    },
-    logout: {
-      type: Function,
-      required: true,
-    },
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+defineProps({
+  profile: {
+    type: Object,
+    required: true,
   },
-}
+  onEditProfile: {
+    type: Function,
+    required: true,
+  },
+  logout: {
+    type: Function,
+    required: true,
+  },
+})
+
+const emit = defineEmits(['edit-profile', 'logout'])
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -27,20 +30,22 @@ export default {
           class="profile-picture"
       />
       <div class="header-content">
-        <h1>¡Hola, {{ profile.fullName }} 👋!</h1>
-        <button class="p-button edit-button" @click="$emit('edit-profile')">Editar Perfil</button>
+        <h1>{{ t('profile.greeting', { name: profile.fullName }) }}</h1>
+        <button class="p-button edit-button" @click="emit('edit-profile')">
+          {{ t('profile.edit') }}
+        </button>
       </div>
     </div>
 
     <div class="profile-section">
-      <h2>Información de usuario</h2>
-      <p><strong>Email:</strong> {{ profile.email }}</p>
-      <p><strong>Teléfono:</strong> {{ profile.phone }}</p>
-      <p><strong>Rol:</strong> {{ profile.role }}</p>
+      <h2>{{ t('profile.userInfo') }}</h2>
+      <p><strong>{{ t('profile.email') }}:</strong> {{ profile.email }}</p>
+      <p><strong>{{ t('profile.phone') }}:</strong> {{ profile.phone }}</p>
+      <p><strong>{{ t('profile.role') }}:</strong> {{ profile.role }}</p>
     </div>
 
     <div class="profile-actions">
-      <button class="p-button" @click="$emit('logout')">Cerrar sesión</button>
+      <button class="p-button" @click="emit('logout')">{{ t('profile.logout') }}</button>
     </div>
   </div>
 </template>

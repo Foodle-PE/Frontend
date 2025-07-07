@@ -6,10 +6,10 @@
 
     <template #center>
       <div class="nav-buttons">
-        <router-link to="/user-profile" class="nav-button">Home</router-link>
-        <router-link to="/inventory" class="nav-button">Inventario</router-link>
-        <router-link to="/alerts" class="nav-button">Alertas</router-link>
-        <router-link to="/home" class="nav-button">Sensores</router-link>
+        <router-link to="/user-profile" class="nav-button">{{ $t('toolbar.home') }}</router-link>
+        <router-link to="/inventory" class="nav-button">{{ $t('toolbar.inventory') }}</router-link>
+        <router-link to="/alerts" class="nav-button">{{ $t('toolbar.alerts') }}</router-link>
+        <router-link to="/home" class="nav-button">{{ $t('toolbar.sensors') }}</router-link>
       </div>
     </template>
 
@@ -22,7 +22,7 @@
             <option value="es">Español</option>
           </select>
         </div>
-        <button class="logout-button" @click="logout">Cerrar sesión</button>
+        <button class="logout-button" @click="logout">{{ $t('toolbar.logout') }}</button>
       </div>
     </template>
   </pv-toolbar>

@@ -54,5 +54,57 @@
     "hideHistory": "Hide history",
     "closedTitle": "Closed Alerts History",
     "noClosed": "No closed alerts."
+  },
+  "toolbar": {
+    "home": "Home",
+    "inventory": "Inventory",
+    "alerts": "Alerts",
+    "sensors": "Sensors",
+    "logout": "Log out"
+  },
+  "profile": {
+    "greeting": "Hello, {name} 👋!",
+    "edit": "Edit Profile",
+    "userInfo": "User Information",
+    "email": "Email",
+    "phone": "Phone",
+    "role": "Role",
+    "logout": "Log out"
+  },
+  "register": {
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Register",
+    "passwordMismatch": "Passwords do not match",
+    "pickPassword": "Pick a password",
+    "suggestionsTitle": "Suggestions",
+    "suggestion": {
+      "lowercase": "At least one lowercase",
+      "uppercase": "At least one uppercase",
+      "numeric": "At least one numeric",
+      "minLength": "Minimum 8 characters"
+    },
+    "role": {
+      "owner": "Owner",
+      "employee": "Employee"
+    }
+  },
+  "editProfile": {
+    "title": "Edit Profile",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "firstNamePlaceholder": "e.g. Harry",
+    "lastNamePlaceholder": "e.g. Potter",
+    "emailPlaceholder": "e.g. maria@gmail.com",
+    "phonePlaceholder": "e.g. 999999999",
+    "save": "Save Changes",
+    "cancel": "Cancel"
   }
 }
