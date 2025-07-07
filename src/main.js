@@ -14,6 +14,7 @@ import DialogService from 'primevue/dialogservice'
 import ToastService from 'primevue/toastservice'
 
 
+
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import Checkbox from 'primevue/checkbox'
@@ -25,6 +26,17 @@ import Password from "primevue/password";
 import Divider from 'primevue/divider'
 import Toolbar from 'primevue/toolbar'
 import {RadioButton} from "primevue";
+
+import { createI18n } from 'vue-i18n'
+import en from './locales/en.json'
+import es from './locales/es.json'
+
+const i18n = createI18n({
+    legacy: false, // important for <script setup>
+    locale: 'en', // default locale
+    fallbackLocale: 'en',
+    messages: { en, es }
+})
 
 import {createPinia} from "pinia";
 const pinia = createPinia();
@@ -42,6 +54,7 @@ app.use(PrimeVue, {
     .use(DialogService)
     .use(ToastService)
     .use(pinia)
+    .use(i18n)
     .component('pv-button', Button)
     .component('pv-input-text', InputText)
     .component('pv-checkbox', Checkbox)

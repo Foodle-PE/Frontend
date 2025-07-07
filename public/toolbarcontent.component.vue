@@ -13,7 +13,16 @@
     </template>
 
     <template #end>
-      <button class="logout-button" @click="logout">Cerrar sesión</button>
+      <div class="end-section">
+        <div class="language-selector">
+          <label for="lang-select">🌐</label>
+          <select id="lang-select" v-model="$i18n.locale">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+        <button class="logout-button" @click="logout">Cerrar sesión</button>
+      </div>
     </template>
   </pv-toolbar>
 </template>
@@ -72,5 +81,29 @@ export default {
 
 .logout-button:hover {
   background-color: #c82333;
+}
+
+.end-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.language-selector select {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
 }
 </style>

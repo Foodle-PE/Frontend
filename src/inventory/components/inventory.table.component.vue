@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { getProducts, addProduct } from '../services/productService';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 const products = ref([]);
 const showForm = ref(false);
@@ -41,42 +43,42 @@ onMounted(() => {
 
 <template>
   <div class="inventory-container">
-    <h1>Inventory</h1>
+    <h1>{{ t('inventory.title') }}</h1>
 
     <button :class="{ 'cancel-button': showForm }" @click="showForm = !showForm">
-      {{ showForm ? 'Cancel' : 'Add Product' }}
+      {{ showForm ? t('inventory.cancel') : t('inventory.addProduct') }}
     </button>
 
     <div v-if="showForm" class="form-container">
       <form @submit.prevent="submitProduct">
         <label>
-          Name:
+          {{ t('inventory.name') }}:
           <input type="text" v-model="newProduct.name" required />
         </label>
         <label>
-          Expiration Date:
+          {{ t('inventory.expirationDate') }}:
           <input type="date" v-model="newProduct.expirationDate" required />
         </label>
         <label>
-          Quantity:
+          {{ t('inventory.quantity') }}:
           <input type="number" v-model="newProduct.quantity" required />
         </label>
-        <button type="submit">Save</button>
+        <button type="submit">{{ t('inventory.save') }}</button>
       </form>
     </div>
 
-    <div v-if="loading">Loading products...</div>
+    <div v-if="loading">{{ t('inventory.loading') }}</div>
 
     <div v-else-if="products.length === 0">
-      <p>No products found. Please add some.</p>
+      <p>{{ t('inventory.noProducts') }}</p>
     </div>
 
     <table v-else>
       <thead>
       <tr>
-        <th>Product</th>
-        <th>Expiration Date</th>
-        <th>Quantity</th>
+        <th>{{ t('inventory.product') }}</th>
+        <th>{{ t('inventory.expirationDate') }}</th>
+        <th>{{ t('inventory.quantity') }}</th>
       </tr>
       </thead>
       <tbody>

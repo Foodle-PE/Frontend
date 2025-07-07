@@ -3,16 +3,15 @@
     <div class="main-content">
       <div class="charts-wrapper">
         <chart-box
-            title="Temperature"
+            :title="t('sensors.temperature')"
             :data="temperature"
             :alert="Math.max(...temperature) > 25"
         />
         <chart-box
-            title="Gas Levels"
+            :title="t('sensors.gasLevels')"
             :data="gas"
             :alert="Math.max(...gas) > 40"
         />
-
         <chart-box
             v-for="(chart, index) in customCharts"
             :key="index"
@@ -20,54 +19,47 @@
             :data="chart.data"
             :alert="Math.max(...chart.data) > 40"
         />
-
         <input-box @create-graph="crearGrafico" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getTemperatureData, getGasLevels } from '/src/Sensors/services/sensor.service.js'
 import ChartBox from '/src/Sensors/components/chart-box.component.vue'
 import InputBox from '/src/Sensors/components/input-box.component.vue'
+import { useAuthenticationStore } from '/src/authorization/services/authentication.store.js'
 
-import { getTemperatureData, getGasLevels } from '/src/Sensors/services/sensor.service.js'
-export default {
-  name: 'HomeView',
-  components: {
-    ChartBox,
-    InputBox
-  },
-  data() {
-    return {
-      temperature: [],
-      gas: [],
-      customCharts: []
-    }
-  },
-  async mounted() {
-    this.temperature = await getTemperatureData()
-    this.gas = await getGasLevels()
-  },
-  methods: {
-    logout() {
-      const authStore = useAuthenticationStore();
-      authStore.signOut(this.$router);
-    },
-    crearGrafico(nombre) {
-      const ubicaciones = ['Miraflores', 'San Isidro', 'Barranco', 'Surco', 'Jesús María']
-      const datos = ubicaciones.map(() => Math.floor(Math.random() * 50) + 10)
+const { t } = useI18n()
 
-      this.customCharts.push({
-        title: `${nombre}`,
-        data: datos
-      })
-    }
-  }
+const temperature = ref([])
+const gas = ref([])
+const customCharts = ref([])
+
+onMounted(async () => {
+  temperature.value = await getTemperatureData()
+  gas.value = await getGasLevels()
+})
+
+function logout() {
+  const authStore = useAuthenticationStore()
+  authStore.signOut(this.$router)
 }
 
-import { useAuthenticationStore } from '/src/authorization/services/authentication.store.js';
+function crearGrafico(nombre) {
+  const ubicaciones = ['Miraflores', 'San Isidro', 'Barranco', 'Surco', 'Jesús María']
+  const datos = ubicaciones.map(() => Math.floor(Math.random() * 50) + 10)
+
+  customCharts.value.push({
+    title: t('sensors.customChart', { name: nombre }),
+    data: datos
+  })
+}
 </script>
+
 
 <style scoped>
 

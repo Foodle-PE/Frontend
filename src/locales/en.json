@@ -1,33 +1,58 @@
 {
-
-  "welcome": "Welcome to Your Gym App!",
-  "track": "Track your workout plans and nutrition here.",
-  "workout" : "Your Workout Plan",
-  "exercise-information": "Exercise Information",
-  "cardio-description": "For improving cardio vascular health through regular and consistent aerobic activities.",
-  "running-description": "Running is one of the most effective forms of aerobic exercise.",
-  "jump-rope-description": "Jumping rope benefits several muscles at the same time.",
-  "weight-lifting-description": "To build muscle and strength through regular and focused strength training exercises.",
-  "strength-training-description": "Do strength training exercises for all major muscle groups at least two times a week.",
-  "beginner-guide-description": "Use our beginner strength training guide to begin losing weight and building muscle.",
-
-
-  "coach": {
-    "knowledge": "New",
-    "guidance": "Reach out for personalized guidance."
+  "inventory": {
+    "title": "Inventory",
+    "addProduct": "Add Product",
+    "cancel": "Cancel",
+    "name": "Name",
+    "expirationDate": "Expiration Date",
+    "quantity": "Quantity",
+    "save": "Save",
+    "loading": "Loading products...",
+    "noProducts": "No products found. Please add some.",
+    "product": "Product"
   },
-  "book": {
-    "title": "Book a Training Session",
-    "details": "Fill in the details",
-    "selectCoach": "Select Coach",
-    "sessionDate": "Session Date",
-    "bookNow": "Book Now"
+  "sensors": {
+    "temperature": "Temperature",
+    "gasLevels": "Gas Levels",
+    "customChart": "Custom Chart: {name}"
   },
-  "footer": "© 2024 FlexPal. All rights reserved."
-
-
-
-
-
-
+  "auth": {
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "registerHere": "Register here",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Your username",
+    "passwordPlaceholder": "Your password",
+    "login": "Login",
+    "missingCredentials": "Please enter username and password",
+    "register": "Register",
+    "haveAccount": "Already have an account?",
+    "signInHere": "Sign in here"
+  },
+  "alerts": {
+    "title": "Alerts",
+    "addAlert": "Add Alert",
+    "cancel": "Cancel",
+    "type": "Alert Type",
+    "message": "Message",
+    "severity": "Severity",
+    "selectSeverity": "Select severity",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "save": "Save Alert",
+    "loading": "Loading alerts...",
+    "loadingError": "Error loading alerts",
+    "noAlerts": "No more active alerts",
+    "date": "Date",
+    "details": "More details",
+    "close": "Close",
+    "detailTitle": "Alert Detail",
+    "closeDetails": "Close detail",
+    "showHistory": "Alert history",
+    "hideHistory": "Hide history",
+    "closedTitle": "Closed Alerts History",
+    "noClosed": "No closed alerts."
+  }
 }

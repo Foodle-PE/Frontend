@@ -1,0 +1,58 @@
+{
+  "inventory": {
+    "title": "Inventario",
+    "addProduct": "Agregar producto",
+    "cancel": "Cancelar",
+    "name": "Nombre",
+    "expirationDate": "Fecha de vencimiento",
+    "quantity": "Cantidad",
+    "save": "Guardar",
+    "loading": "Cargando productos...",
+    "noProducts": "No se encontraron productos. Agrega alguno.",
+    "product": "Producto"
+  },
+  "sensors": {
+    "temperature": "Temperatura",
+    "gasLevels": "Niveles de gas",
+    "customChart": "Gráfico personalizado: {name}"
+  },
+  "auth": {
+    "signIn": "Inicia sesión",
+    "noAccount": "¿No tienes cuenta?",
+    "registerHere": "Regístrate aquí",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "usernamePlaceholder": "Tu usuario",
+    "passwordPlaceholder": "Tu contraseña",
+    "login": "Ingresar",
+    "missingCredentials": "Por favor ingrese usuario y contraseña",
+    "register": "Regístrate",
+    "haveAccount": "¿Tienes cuenta?",
+    "signInHere": "Inicia sesión aquí"
+  },
+  "alerts": {
+    "title": "Alertas",
+    "addAlert": "Agregar Alerta",
+    "cancel": "Cancelar",
+    "type": "Tipo de alerta",
+    "message": "Mensaje",
+    "severity": "Severidad",
+    "selectSeverity": "Seleccione severidad",
+    "low": "Baja",
+    "medium": "Media",
+    "high": "Alta",
+    "save": "Guardar Alerta",
+    "loading": "Cargando alertas...",
+    "loadingError": "Error cargando alertas",
+    "noAlerts": "Ya no hay más alertas",
+    "date": "Fecha",
+    "details": "Más detalles",
+    "close": "Cerrar",
+    "detailTitle": "Detalle de Alerta",
+    "closeDetails": "Cerrar detalle",
+    "showHistory": "Historial de alertas",
+    "hideHistory": "Ocultar historial",
+    "closedTitle": "Historial de Alertas Cerradas",
+    "noClosed": "No hay alertas cerradas."
+  }
+}
