@@ -44,7 +44,7 @@ export default {
         :onEditProfile="goToEditProfile"
         :logout="logout"
     />
-    <div v-else class="loading">Cargando perfil...</div>
+    <div v-else class="loading"> Bienvenido a GoodFood. Gracias por registrarte.</div>
   </div>
 </template>
 
