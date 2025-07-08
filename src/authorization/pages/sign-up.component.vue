@@ -3,10 +3,13 @@ import { useAuthenticationStore } from '/src/authorization/services/authenticati
 import FormRegister from '/src/authorization/components/registration-form.component.vue'
 import { SignUpRequest } from '../model/sign-up.request.js'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router';
 
 const { t } = useI18n()
+const router = useRouter();
 
 const onSignUp = (user) => {
+
   const authenticationStore = useAuthenticationStore()
 
   const signUpRequest = new SignUpRequest(
